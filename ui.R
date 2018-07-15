@@ -5,9 +5,14 @@ ui <- shinyUI(fluidPage(
     # Application title
   titlePanel("Stock Trend Analysis"),
   
+  sidebarLayout(
+  
   dateRangeInput('dateRange',
                  label = 'Select date range: yyyy-mm-dd',
                  start = Sys.Date() - 2, end = Sys.Date()
-  )
-))
+                 )
+                )
+                          )
+)
+
 shinyApp(ui, server = function(input, output) { })
