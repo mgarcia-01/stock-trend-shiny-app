@@ -3,7 +3,7 @@ suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
 library(shiny)
 
 
-server <- shinyServer(function(input, output) {
+appServer <- shinyServer(function(input, output) {
   
           output$distPlot <- renderPlot({
             chartSeries(dataInput()
