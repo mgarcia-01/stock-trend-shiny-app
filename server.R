@@ -5,7 +5,7 @@ library(shiny)
 
 appServer <- shinyServer(function(input, output) {
   
-          output$distPlot <- renderPlot({
+          output$plot <- renderPlot({
             chartSeries(dataInput()
                         , theme = chartTheme("white")
                         ,type = "line"
