@@ -32,8 +32,8 @@ stockAgg <- aggregate(close ~ BGN_DATEP, tmeventSeries, FUN = mean)
 stockdf <- stockAgg
 rm(stockAgg)
 dateRange <- stockdf$BGN_DATEP
-startRange <- dateRange[1]
-endRange <- dateRange[length(dateRange)]
+startrange <- dateRange[1]
+endrange <- dateRange[length(dateRange)]
 
 
 #stockAgg <- aggregate(close ~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = mean)
