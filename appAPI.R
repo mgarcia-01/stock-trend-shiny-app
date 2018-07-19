@@ -16,6 +16,15 @@ download.file(url = alphaURL, destfile = destFile)
 stockdf <- read.csv(destFile)
 
 
+BGN_DATEP <- as.POSIXct(unlist(stockdf$timestamp), tz = "GMT")
+BGN_MONTH <- strftime(stockdf$timestamp, "%m")
+BGN_YEAR <- strftime(stockdf$timestamp, "%Y")
+BGN_DATES <- data.frame(BGN_MONTH,BGN_YEAR,BGN_DATEP)
+tmeventSeries <- cbind(BGN_DATES ,stockdf)
+tmSeriesAgF <- aggregate(FATALITIES~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = sum)
+tmSeriesAgI <- aggregate(INJURIES~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = sum)
+tmSeriesAg <- merge(tmSeriesAgF,tmSeriesAgI, by = c("BGN_MONTH", "BGN_YEAR"))
+tmSeriesAg$MOYR <- as.POSIXct(paste(tmSeriesAg$BGN_YEAR, tmSeriesAg$BGN_MONTH, "01", sep = "-"))
 
 
 daterange1 <- unique(as.Date(stockdf$timestamp))
