@@ -8,8 +8,10 @@ appServer <- shinyServer(function(input, output) {
   dateInput <- stockdf
   
           output$plot <- renderPlot({
-            plot(stockdf$timestamp, stockdf$close
-                 ,type = "l")
+            plot(stockdf$BGN_DATEP, stockdf$close
+                 ,type = "l"
+                 ,xlab = "Date"
+                 ,ylab = "Closing Price")
             
           })
           
