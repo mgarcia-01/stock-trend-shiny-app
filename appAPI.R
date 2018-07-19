@@ -10,7 +10,12 @@ apiKey <- as.character(apiDf[1,1])
 ticker <- as.character("BSX")
 #alphaURL <- paste0("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=",ticker,"&interval=1min&apikey=",apiKey,"&datatype=csv")
 
-alphaURL <- paste0("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=",ticker,"&outputsize=full","&apikey=",apiKey,"demo&datatype=csv")
+alphaURL <- paste0("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
+                   ,ticker
+                   ,"&outputsize=full","&apikey="
+                   ,apiKey
+                   ,"demo&datatype=csv"
+                   )
 destFile <- paste0(getwd(),"/",ticker,".csv")
 
 #downloadStock <- function(){

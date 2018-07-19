@@ -21,4 +21,6 @@ ui <- shinyUI(fluidPage(
                           )
 )
 
-shinyApp(ui, server = function(input, output) { })
+
+## does not need this
+#shinyApp(ui, server = function(input, output) { })

@@ -3,11 +3,14 @@
 
 appServer <- shinyServer(function(input, output) {
   
-  dataInput <- 
+dateInput <- reactive(
+  {
+    
+  }
+)   
+  
   output$plot <- renderPlot({
-    stockdfPlot <- 
-    stockdf[which(stockdf$BGN_DATEP>= input$dateRange| 
-                    stockdf$BGN_DATEP<=input$dateRange),]
+    
     plot(stockdf$BGN_DATEP, stockdf$close
          ,type = "l"
          ,xlab = "Date"
