@@ -15,4 +15,7 @@ destFile <- paste0(getwd(),"/",ticker,".csv")
 download.file(url = alphaURL, destfile = destFile)
 stockdf <- read.csv(destFile)
 
+
+
+
 daterange1 <- unique(as.Date(stockdf$timestamp))
