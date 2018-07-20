@@ -2,6 +2,4 @@
 library(shiny)
 library(plotly)
 locldir <- as.character(getwd())
-suppressWarnings(
-            runApp(locldir)
-)
+runApp(locldir)
