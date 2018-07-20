@@ -24,7 +24,7 @@ destFile <- paste0(getwd(),"/",ticker,".csv")
  # if()}
 
 ## Already downloaded once ##
-download.file(url = alphaURL, destfile = destFile)
+#download.file(url = alphaURL, destfile = destFile)
 stockdf <- read.csv(destFile)
 
 
