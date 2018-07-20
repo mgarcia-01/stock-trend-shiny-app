@@ -21,6 +21,9 @@ appServer <- shinyServer(function(input, output) {
          ,ylab = "Closing Price"
          ,xlim = timeline
          ,ylim = closelim
+         ,col = "dodger blue"
+         ,lwd = 2
     )
+    abline(v = mean(dataInput()$BGN_DATEP), col = "red", lwd = 2)
   })
 })
