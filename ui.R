@@ -18,9 +18,8 @@ ui <- shinyUI(fluidPage(
                                    ,end = as.character(endrange)
                                    )
                 ),
-          
-          
-          mainPanel(plotOutput("plot"))
+          mainPanel(plotOutput("plot"),
+                    plotOutput("plot2"))
                         )
                           )
 )

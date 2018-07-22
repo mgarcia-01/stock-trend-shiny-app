@@ -14,15 +14,19 @@ appServer <- shinyServer(function(input, output) {
     startrange <- min(dataInput()$BGN_DATEP)
     endrange <- max(dataInput()$BGN_DATEP)
     timeline <- c(startrange,endrange)
-    closelim <- c(ystart,yend)
-    
+    pctchglim <- c(ystart,yend)
+    closelim <- c(closestart,closeend)
+
+## does not need par function as the plots are not in same output.
+## two outputs created vs 1.
+    #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
     plot(dataInput()$BGN_DATEP
          ,dataInput()$pctchg
          ,type = "l"
          ,xlab = "Date"
          ,ylab = "Price Percent Change"
          ,xlim = timeline
-         ,ylim = closelim
+         ,ylim = pctchglim
          ,col = "dodger blue"
          ,lwd = 2
     )
@@ -44,5 +48,24 @@ appServer <- shinyServer(function(input, output) {
                 ,col = "green"
                 ,lwd = 1
           )
+  })
+  output$plot2 <- renderPlot({
+    startrange <- min(dataInput()$BGN_DATEP)
+    endrange <- max(dataInput()$BGN_DATEP)
+    timeline <- c(startrange,endrange)
+    pctchglim <- c(ystart,yend)
+    closelim <- c(closestart,closeend)
+    
+    #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
+    plot(dataInput()$BGN_DATEP
+         ,dataInput()$close
+         ,type = "l"
+         ,xlab = "Date"
+         ,ylab = "Closing Price"
+         ,xlim = timeline
+         ,ylim = closelim
+         ,col = "blue"
+         ,lwd = 2
+    )
   })
 })

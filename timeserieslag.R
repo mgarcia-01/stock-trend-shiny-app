@@ -11,3 +11,5 @@ startrange <- dateRange[1]
 endrange <- dateRange[length(dateRange)]
 ystart <- min(stockdf$pctchg)
 yend <- max(stockdf$pctchg)
+closestart <- min(stockdf$close)
+closeend <- max(stockdf$close)
