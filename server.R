@@ -11,9 +11,11 @@ appServer <- shinyServer(function(input, output) {
   )
   
   output$plot <- renderPlot({
-    
+    startrange <- min(dataInput()$BGN_DATEP)
+    endrange <- max(dataInput()$BGN_DATEP)
     timeline <- c(startrange,endrange)
-    closelim <- c(ystart,yend)
+    closelim <- c((-1*ystart)+(ystart*-.25),yend+(yend*.25))
+    
     plot(dataInput()$BGN_DATEP
          ,dataInput()$close
          ,type = "l"
@@ -36,6 +38,11 @@ appServer <- shinyServer(function(input, output) {
                 ,col = "orange"
                 ,lwd = 1
               )
-          abline(v = mean(dataInput()$BGN_DATEP), col = "red", lwd = 2)
+          lines(x = dataInput()$BGN_DATEP
+                ,y = dataInput()$fit
+                ,type = "l"
+                ,col = "green"
+                ,lwd = 1
+          )
   })
 })

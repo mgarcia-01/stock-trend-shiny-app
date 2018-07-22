@@ -10,12 +10,15 @@ ui <- shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
   
-  dateRangeInput('dates',
-                 label = 'Select date range: yyyy-mm-dd',
-                 #start = Sys.Date() - 2, end = Sys.Date()
-                 start = as.character(startrange), end = as.character(endrange)
-                 )
+            dateRangeInput('dates',
+                           label = 'Select date range: yyyy-mm-dd',
+                           #start = Sys.Date() - 2, end = Sys.Date()
+                           start = as.character(startrange)
+                           ,end = as.character(endrange)
+                           )
         ),
+  
+  
   mainPanel(plotOutput("plot"))
                 )
                           )
