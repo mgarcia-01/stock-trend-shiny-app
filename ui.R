@@ -5,7 +5,7 @@ suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
     # Application title
-  titlePanel("Stock Trend Analysis"),
+  titlePanel("Boston Scientific Corporation Market Analysis"),
   
   sidebarLayout(
     sidebarPanel(
