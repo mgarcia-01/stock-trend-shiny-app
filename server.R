@@ -14,13 +14,13 @@ appServer <- shinyServer(function(input, output) {
     startrange <- min(dataInput()$BGN_DATEP)
     endrange <- max(dataInput()$BGN_DATEP)
     timeline <- c(startrange,endrange)
-    closelim <- c((-1*ystart)+(ystart*-.25),yend+(yend*.25))
+    closelim <- c(ystart,yend)
     
     plot(dataInput()$BGN_DATEP
-         ,dataInput()$close
+         ,dataInput()$pctchg
          ,type = "l"
          ,xlab = "Date"
-         ,ylab = "Closing Price"
+         ,ylab = "Price Percent Change"
          ,xlim = timeline
          ,ylim = closelim
          ,col = "dodger blue"

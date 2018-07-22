@@ -36,11 +36,8 @@ tmeventSeries <- cbind(BGN_DATES ,stockdf)
 stockAgg <- aggregate(close ~ BGN_DATEP, tmeventSeries, FUN = mean)
 stockdf <- stockAgg
 rm(stockAgg)
-dateRange <- stockdf$BGN_DATEP
-startrange <- dateRange[1]
-endrange <- dateRange[length(dateRange)]
-ystart <- min(stockdf$close)
-yend <- max(stockdf$close)
+
+
 
 
 
