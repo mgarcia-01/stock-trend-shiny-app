@@ -24,6 +24,18 @@ appServer <- shinyServer(function(input, output) {
          ,col = "dodger blue"
          ,lwd = 2
     )
-    abline(v = mean(dataInput()$BGN_DATEP), col = "red", lwd = 2)
+          lines(x = dataInput()$BGN_DATEP
+                ,y = dataInput()$upr
+                ,type = "l"
+                ,col = "orange"
+                ,lwd = 1
+                )
+          lines(x = dataInput()$BGN_DATEP
+                ,y = dataInput()$lwr
+                ,type = "l"
+                ,col = "orange"
+                ,lwd = 1
+              )
+          abline(v = mean(dataInput()$BGN_DATEP), col = "red", lwd = 2)
   })
 })

@@ -1,5 +1,6 @@
 
 suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
+suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
 
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(

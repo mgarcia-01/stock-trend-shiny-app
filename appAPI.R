@@ -41,6 +41,12 @@ startrange <- dateRange[1]
 endrange <- dateRange[length(dateRange)]
 ystart <- min(stockdf$close)
 yend <- max(stockdf$close)
+
+
+
+
+
+
 #stockAgg <- aggregate(close ~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = mean)
 #tmSeriesAgI <- aggregate(INJURIES~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = sum)
 #tmSeriesAg <- merge(tmSeriesAgF,tmSeriesAgI, by = c("BGN_MONTH", "BGN_YEAR"))
