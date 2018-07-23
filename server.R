@@ -30,6 +30,7 @@ appServer <- shinyServer(function(input, output) {
          ,col = "dodger blue"
          ,lwd = 2
     )
+    
           lines(x = dataInput()$BGN_DATEP
                 ,y = dataInput()$upr
                 ,type = "l"
@@ -64,13 +65,13 @@ appServer <- shinyServer(function(input, output) {
          ,ylab = "Closing Price"
          ,xlim = timeline
          ,ylim = closelim
-         ,col = "black"
+         ,col = "dodger blue"
          ,lwd = 2.75
     )
     lines(x = dataInput()$BGN_DATEP
           ,y = dataInput()$mvgAvg
           ,type = "l"
-          ,col = "orange"
+          ,col = 54#"orange"
           ,lwd = 2
           )
   })
