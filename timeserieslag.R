@@ -1,8 +1,10 @@
 #time series lag - percent change
 zlag <- zoo::zoo(stockdf$close)
+stockdf$mvgAvg <- movingAverage(x = stockdf$close, n = 90, centered = FALSE)
 stockdf$lag <- lag(x = zlag, k = -1, na.pad = TRUE)
 stockdf$pctchg <- round((stockdf$close-stockdf$lag)/stockdf$lag,3)
 stockdf <- stockdf[-1,]
+
 
 
 

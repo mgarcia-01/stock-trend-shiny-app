@@ -1,5 +1,5 @@
-
 suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
+suppressWarnings(source(paste0(getwd(),"/","mvgavgfunc.R")))
 suppressWarnings(source(paste0(getwd(),"/","timeserieslag.R")))
 suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
 
@@ -17,6 +17,7 @@ ui <- shinyUI(fluidPage(
                                    start = as.character(startrange)
                                    ,end = as.character(endrange)
                                    )
+                    ,numericInput("lags", "Days lag:", 30, min = 1, max = 365)
                 ),
           mainPanel(plotOutput("plot"),
                     plotOutput("plot2"))

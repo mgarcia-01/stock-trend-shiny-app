@@ -64,8 +64,14 @@ appServer <- shinyServer(function(input, output) {
          ,ylab = "Closing Price"
          ,xlim = timeline
          ,ylim = closelim
-         ,col = "blue"
-         ,lwd = 2
+         ,col = "black"
+         ,lwd = 2.75
     )
+    lines(x = dataInput()$BGN_DATEP
+          ,y = dataInput()$mvgAvg
+          ,type = "l"
+          ,col = "orange"
+          ,lwd = 2
+          )
   })
 })
