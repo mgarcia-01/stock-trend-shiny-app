@@ -16,7 +16,7 @@ appServer <- shinyServer(function(input, output) {
     timeline <- c(startrange,endrange)
     pctchglim <- c(ystart,yend)
     closelim <- c(closestart,closeend)
-    
+    stockdf$sm <- ma(stockdf$close, order = 90, centre = FALSE)
 
 ## does not need par function as the plots are not in same output.
 ## two outputs created vs 1.
@@ -75,10 +75,10 @@ appServer <- shinyServer(function(input, output) {
           ,col = 54#"orange"
           ,lwd = 2
           )
-    lines(x = ma(dataInput()$close, order = 12)
-          ,
-          ,col = "red"
-          ,lwd = 5)
+    lines(x = dataInput()$BGN_DATEP
+          ,y= dataInput()$sm
+          ,col = "green"
+          ,lwd = 2)
     
   })
 })
