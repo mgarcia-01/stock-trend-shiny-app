@@ -10,13 +10,20 @@ appServer <- shinyServer(function(input, output) {
     }
   )
   
+  dataInput2 <- reactive(
+    {optList <- as.numeric(c(1:365))
+     optList[which(optList == input$lags)]
+     }
+  ) 
+  
   output$plot <- renderPlot({
     startrange <- min(dataInput()$BGN_DATEP)
     endrange <- max(dataInput()$BGN_DATEP)
     timeline <- c(startrange,endrange)
     pctchglim <- c(ystart,yend)
     closelim <- c(closestart,closeend)
-    stockdf$sm <- ma(stockdf$close, order = 90, centre = FALSE)
+    stockdf$sm <- ma(stockdf$close, order = dataInput2()
+                     ,centre = FALSE)
 
 ## does not need par function as the plots are not in same output.
 ## two outputs created vs 1.
