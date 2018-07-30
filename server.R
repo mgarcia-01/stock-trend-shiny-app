@@ -14,9 +14,10 @@ appServer <- shinyServer(function(input, output) {
     {optList <- as.numeric(c(1:365))
      optList[which(optList == input$lags)]
      }
-  ) 
+  )
   
-  output$plot <- renderPlot({
+  
+output$plot <- renderPlot({
     startrange <- min(dataInput()$BGN_DATEP)
     endrange <- max(dataInput()$BGN_DATEP)
     timeline <- c(startrange,endrange)
@@ -74,7 +75,7 @@ appServer <- shinyServer(function(input, output) {
          ,ylab = "Closing Price"
          ,xlim = timeline
          ,ylim = closelim
-         ,col = "dodger blue"
+         ,col = "black"
          ,lwd = 2.75
     )
     #lines(x = dataInput()$BGN_DATEP
@@ -83,8 +84,8 @@ appServer <- shinyServer(function(input, output) {
     #      ,col = 54#"orange"
     #      ,lwd = 2
     #      )
-    lines(x = dataInput()$BGN_DATEP
-          ,y= dataInput()$sm
+    lines(x = stockdf$BGN_DATEP
+          ,y= stockdf$sm
           ,col = "green"
           ,lwd = 2)
     
