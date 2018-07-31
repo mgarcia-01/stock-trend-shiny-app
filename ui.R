@@ -13,7 +13,7 @@ ui <- shinyUI(fluidPage(
                                    start = as.character(startrange)
                                    ,end = as.character(endrange)
                                    )
-                    ,numericInput("lags", "Days lag:", 30, min = 1, max = 365)
+                    ,numericInput("lags", "Days lag:", 90, min = 1, max = 365)
                      #,verbatimTextOutput("value")
                 ),
           mainPanel(plotOutput("plot"),

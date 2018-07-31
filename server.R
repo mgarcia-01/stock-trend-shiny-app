@@ -75,7 +75,7 @@ output$plot <- renderPlot({
          ,ylab = "Closing Price"
          ,xlim = timeline
          ,ylim = closelim
-         ,col = "blue"
+         ,col = "dodger blue"
          ,lwd = 2.75
     )
     #lines(x = dataInput()$BGN_DATEP
