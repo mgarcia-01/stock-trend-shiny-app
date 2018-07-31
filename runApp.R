@@ -4,6 +4,8 @@ library(forecast)
 library(plotly)
 library(ggplot2)
 
+suppressWarnings(source(paste0(getwd(),"/","tickerSelect.R")))
+suppressWarnings(source(paste0(getwd(),"/","tickerFunction.R")))
 suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
 suppressWarnings(source(paste0(getwd(),"/","mvgavgfunc.R")))
 suppressWarnings(source(paste0(getwd(),"/","timeserieslag.R")))

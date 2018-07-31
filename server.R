@@ -15,7 +15,12 @@ appServer <- shinyServer(function(input, output) {
      optList[which(optList == input$lags)]
      }
   )
+  #################
+  dataInput3 <- reactive(
+    {tickerSymbol <- as.character(input$ticker)}
+    )
   
+  ####################
   
 output$plot <- renderPlot({
     startrange <- min(dataInput()$BGN_DATEP)

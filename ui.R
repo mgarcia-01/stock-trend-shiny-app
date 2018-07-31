@@ -2,7 +2,7 @@
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
     # Application title
-          titlePanel("Boston Scientific Corporation Market Analysis"),
+          titlePanel("Amazon Market Analysis"),
           
           sidebarLayout(
             sidebarPanel(
@@ -15,8 +15,10 @@ ui <- shinyUI(fluidPage(
                                    )
                     ,numericInput("lags", "Days lag:", 90, min = 1, max = 365)
                      #,verbatimTextOutput("value")
+                    ,textInput("ticker","Ticker Symbol",value = "AMZN")
                 ),
-          mainPanel(plotOutput("plot"),
+          mainPanel(verbatimTextOutput("ntext"),
+                    plotOutput("plot"),
                     plotOutput("plot2"))
                         )
                           )
