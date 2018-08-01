@@ -83,12 +83,12 @@ output$plot <- renderPlot({
          ,col = "dodger blue"
          ,lwd = 2.75
     )
-    #lines(x = dataInput()$BGN_DATEP
-    #      ,y = dataInput()$mvgAvg
-    #      ,type = "l"
-    #      ,col = 54#"orange"
-    #      ,lwd = 2
-    #      )
+    lines(x = dataInput()$BGN_DATEP
+          ,y = dataInput()$mvgAvg
+         ,type = "l"
+         ,col = 54#"orange"
+         ,lwd = 2
+          )
     lines(x = stockdf$BGN_DATEP
           ,y= stockdf$sm
           ,col = "green"

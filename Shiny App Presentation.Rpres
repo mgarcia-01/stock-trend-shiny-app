@@ -1,0 +1,31 @@
+Shiny App Presentation
+========================================================
+author: Michael Garcia
+date: August 1, 2018
+autosize: true
+
+First Slide
+========================================================
+
+The Stock Analysis app is used to provide a graphical representation of the
+price changes and the closing price for a particular stock.
+
+- First graph plots price change percent with upper and lower confidence intervals
+ - Also includes fitted line
+- Second graph plots closing price with a simple moving average.
+ - This plot can change the number of days lag
+- Both graphs can be adjusted for the date range
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```

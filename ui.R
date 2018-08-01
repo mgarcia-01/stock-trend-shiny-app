@@ -1,3 +1,17 @@
+#load the packages
+library(shiny)
+library(forecast)
+library(plotly)
+library(ggplot2)
+
+# source files for data wrangling
+suppressWarnings(source(paste0(getwd(),"/","tickerSelect.R")))
+suppressWarnings(source(paste0(getwd(),"/","tickerFunction.R")))
+suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
+suppressWarnings(source(paste0(getwd(),"/","mvgavgfunc.R")))
+suppressWarnings(source(paste0(getwd(),"/","timeserieslag.R")))
+suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
+
 
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
