@@ -36,7 +36,21 @@ head(stockdf,2)
 2 1997-05-16 20.75
 ```
 
-Slide With Plot
+Slide With Price Change Plot
 ========================================================
+![Plot1](plot1.png)
 
+- Includes upper and lower confidence intervals
+- Includes fitted line
 
+Slide with Closing Price Plot
+========================================================
+![Plot2](plot2.png)
+- Closing Price plot
+- Includes simple moving average
+
+Slide with Closing Price Plot
+========================================================
+![reactiveoptions](reactiveoptions.png)
+- Closing Price plot
+- Includes simple moving average
