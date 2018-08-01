@@ -39,4 +39,4 @@ head(stockdf,2)
 Slide With Plot
 ========================================================
 
-![plot of chunk unnamed-chunk-1](Shiny App Presentation-figure/unnamed-chunk-1-1.png)
+
