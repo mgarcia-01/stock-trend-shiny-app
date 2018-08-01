@@ -27,3 +27,4 @@ rsconnect/
 .Rproj.user
 BSX.csv
 AMZN.csv
+.DS_Store
