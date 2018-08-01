@@ -19,8 +19,14 @@ price changes and the closing price for a particular stock.
 Slide With Code
 ========================================================
 
-```{r}
-summary(cars)
+```{r datasets, echo = TRUE}
+direc <- paste0(getwd(),"/","tickerFunction.R")
+direc2 <- paste0(getwd(),"/","appAPI.R")
+
+source(direc)
+source(direc2)
+
+head(stockdf,2)
 ```
 
 Slide With Plot

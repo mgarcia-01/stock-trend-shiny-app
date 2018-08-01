@@ -21,20 +21,22 @@ Slide With Code
 
 
 ```r
-summary(cars)
+direc <- paste0(getwd(),"/","tickerFunction.R")
+direc2 <- paste0(getwd(),"/","appAPI.R")
+
+source(direc)
+source(direc2)
+
+head(stockdf,2)
 ```
 
 ```
-     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
+   BGN_DATEP close
+1 1997-05-15 23.50
+2 1997-05-16 20.75
 ```
 
 Slide With Plot
 ========================================================
 
-![plot of chunk unnamed-chunk-2](Shiny App Presentation-figure/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-1](Shiny App Presentation-figure/unnamed-chunk-1-1.png)
