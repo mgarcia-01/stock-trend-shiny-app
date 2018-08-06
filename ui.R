@@ -16,8 +16,8 @@ suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
     # Application title
-          titlePanel("Amazon Market Analysis"),
-          
+          #titlePanel("Amazon Market Analysis"),
+          titlePanel("Testing Shiny App"),
           sidebarLayout(
             sidebarPanel(
           
@@ -33,7 +33,11 @@ ui <- shinyUI(fluidPage(
                 ),
           mainPanel(verbatimTextOutput("ntext"),
                     plotOutput("plot"),
-                    plotOutput("plot2"))
+                    plotOutput("plot2")
+                    )
+          #,output$page1 <- renderUI({
+          #                  inclRmd("./page1.Rmd")}
+          #                  )
                         )
                           )
 )
