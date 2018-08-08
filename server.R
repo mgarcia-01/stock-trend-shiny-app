@@ -20,7 +20,14 @@ appServer <- shinyServer(function(input, output) {
     {tickerSymbol <- as.character(input$ticker)}
     )
   
-  ####################
+  #################
+  
+  dataInput4 <- reactive(
+    {stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
+                      ,centre = FALSE)
+     stockdf[complete.cases(stockdf),]}
+  )
+  
   
 output$plot <- renderPlot({
     startrange <- min(dataInput()$BGN_DATEP)
@@ -69,12 +76,12 @@ output$plot <- renderPlot({
     timeline <- c(startrange,endrange)
     pctchglim <- c(ystart,yend)
     closelim <- c(closestart,closeend)
-    stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
-                     ,centre = FALSE)
+  #  stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
+  #                   ,centre = FALSE)
     
     #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
-    plot(dataInput()$BGN_DATEP
-         ,dataInput()$close
+    plot(dataInput4()$BGN_DATEP
+         ,dataInput4()$close
          ,type = "l"
          ,xlab = "Date"
          ,ylab = "Closing Price"
@@ -83,14 +90,14 @@ output$plot <- renderPlot({
          ,col = "dodger blue"
          ,lwd = 2.75
     )
-    lines(x = dataInput()$BGN_DATEP
-          ,y = dataInput()$mvgAvg
+    lines(x = dataInput4()$BGN_DATEP
+          ,y = dataInput4()$mvgAvg
          ,type = "l"
          ,col = 54#"orange"
          ,lwd = 2
           )
-    lines(x = stockdf$BGN_DATEP
-          ,y= stockdf$sm
+    lines(x = dataInput4()$BGN_DATEP
+          ,y= dataInput4()$sm
           ,col = "green"
           ,lwd = 2)
     

@@ -1,4 +1,6 @@
 downloadStock()
+downloadEma()
+
 stockdf <- read.csv(destFile)
 BGN_DATEP <- as.POSIXct(unlist(stockdf$timestamp), tz = "GMT")
 BGN_MONTH <- strftime(stockdf$timestamp, "%m")
