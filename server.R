@@ -79,6 +79,9 @@ output$plot <- renderPlot({
   #  stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
   #                   ,centre = FALSE)
     
+    stockdf <- stockdf[complete.cases(stockdf),]
+    
+    
     #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
     plot(dataInput4()$BGN_DATEP
          ,dataInput4()$close
