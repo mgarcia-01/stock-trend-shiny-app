@@ -11,7 +11,7 @@ appServer <- shinyServer(function(input, output) {
   )
   
   dataInput2 <- reactive(
-    {optList <- as.numeric(c(1:365))
+    {optList <- as.numeric(c(1:730))
      optList[which(optList == input$lags)]
      }
   )
@@ -22,10 +22,17 @@ appServer <- shinyServer(function(input, output) {
   
   #################
   
-  dataInput4 <- reactive(
-    {stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
-                      ,centre = FALSE)
-     stockdf[complete.cases(stockdf),]}
+  #dataInput4 <- reactive(
+  #  {stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
+  #                    ,centre = FALSE)
+  #   stockdf[complete.cases(stockdf),]}
+  #  )
+  dataInput5 <- reactive(
+    {stockdf$mvavg <- movingAverage(stockdf$close
+                                    , n = as.numeric(dataInput2())
+                                    , centered = FALSE)
+     stockdf
+    }
   )
   
   
@@ -79,12 +86,11 @@ output$plot <- renderPlot({
   #  stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
   #                   ,centre = FALSE)
     
-    stockdf <- stockdf[complete.cases(stockdf),]
     
     
     #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
-    plot(dataInput4()$BGN_DATEP
-         ,dataInput4()$close
+    plot(dataInput5()$BGN_DATEP
+         ,dataInput5()$close
          ,type = "l"
          ,xlab = "Date"
          ,ylab = "Closing Price"
@@ -93,16 +99,12 @@ output$plot <- renderPlot({
          ,col = "dodger blue"
          ,lwd = 2.75
     )
-    lines(x = dataInput4()$BGN_DATEP
-          ,y = dataInput4()$mvgAvg
+    lines(x = dataInput5()$BGN_DATEP
+          ,y = dataInput5()$mvavg
          ,type = "l"
          ,col = 54#"orange"
          ,lwd = 2
           )
-    lines(x = dataInput4()$BGN_DATEP
-          ,y= dataInput4()$sm
-          ,col = "green"
-          ,lwd = 2)
     
   })
 })

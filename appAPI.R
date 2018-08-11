@@ -21,5 +21,3 @@ rm(stockAgg)
 #stockAgg <- aggregate(close ~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = mean)
 #tmSeriesAgI <- aggregate(INJURIES~ BGN_MONTH+ BGN_YEAR, tmeventSeries, FUN = sum)
 #tmSeriesAg <- merge(tmSeriesAgF,tmSeriesAgI, by = c("BGN_MONTH", "BGN_YEAR"))
-
-
