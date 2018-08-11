@@ -1,7 +1,4 @@
-downloadStock()
-downloadEma()
-
-stockdf <- read.csv(destFile)
+stockdf <- setTicker(tickersymbol = "AMZN")
 BGN_DATEP <- as.POSIXct(unlist(stockdf$timestamp), tz = "GMT")
 BGN_MONTH <- strftime(stockdf$timestamp, "%m")
 BGN_YEAR <- strftime(stockdf$timestamp, "%Y")

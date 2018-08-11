@@ -3,6 +3,13 @@
 
 appServer <- shinyServer(function(input, output) {
   
+  stockInput <- reactive(
+    {
+      
+    }
+  )
+  
+  
   dataInput <- reactive(
     {stockdf[which(as.character(stockdf$BGN_DATEP) >= input$dates[1] &
                      as.character(stockdf$BGN_DATEP) <= input$dates[2])
@@ -97,13 +104,13 @@ output$plot <- renderPlot({
          ,xlim = timeline
          ,ylim = closelim
          ,col = "dodger blue"
-         ,lwd = 2.75
+         ,lwd = 3.25
     )
     lines(x = dataInput5()$BGN_DATEP
           ,y = dataInput5()$mvavg
          ,type = "l"
-         ,col = 54#"orange"
-         ,lwd = 2
+         ,col = "orange" #54
+         ,lwd = 3
           )
     
   })
