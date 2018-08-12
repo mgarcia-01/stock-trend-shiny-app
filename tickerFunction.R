@@ -3,8 +3,8 @@
 #apiPath <- "~/documents/api_keys/alphavantage.csv"
 setTicker <- function(tickersymbol = 'AMZN')(
 {
-  
-  ticker <- as.character(tickersymbol)
+  a <- paste0(tickersymbol)
+  ticker <- as.character(a)
   apiPath <- paste0(getwd(),"/","alphavantage.csv")
   apiDf <- read.csv(apiPath)
   apiKey <- as.character(apiDf[1,1])

@@ -3,16 +3,15 @@
 
 appServer <- shinyServer(function(input, output) {
   
-  stockInput <- reactive(
-    {
-      
-    }
-  )
-  
+  dataInput3 <- reactive({
+    as.data.frame(dataframePrep(tickersym = 'AMZN'))
+    
+  })
+
   
   dataInput <- reactive(
-    {stockdf[which(as.character(stockdf$BGN_DATEP) >= input$dates[1] &
-                     as.character(stockdf$BGN_DATEP) <= input$dates[2])
+    {dataInput3()[which(as.character(dataInput3$BGN_DATEP) >= input$dates[1] &
+                     as.character(dataInput3$BGN_DATEP) <= input$dates[2])
              ,]
     }
   )
@@ -23,9 +22,7 @@ appServer <- shinyServer(function(input, output) {
      }
   )
   #################
-  dataInput3 <- reactive(
-    {tickerSymbol <- as.character(input$ticker)}
-    )
+  #dataInput3 <-
   
   #################
   
@@ -35,7 +32,8 @@ appServer <- shinyServer(function(input, output) {
   #   stockdf[complete.cases(stockdf),]}
   #  )
   dataInput5 <- reactive(
-    {stockdf$mvavg <- movingAverage(stockdf$close
+    { stockdf <- dataInput3()
+      stockdf$mvavg <- movingAverage(stockdf$close
                                     , n = as.numeric(dataInput2())
                                     , centered = FALSE)
      stockdf
