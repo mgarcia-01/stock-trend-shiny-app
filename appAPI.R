@@ -9,7 +9,7 @@ dataframePrep <- function(tickersym = 'AMZN'){
   tmeventSeries <- cbind(BGN_DATES ,stockdf)
   stockAgg <- aggregate(close ~ BGN_DATEP, tmeventSeries, FUN = mean)
   stockdf <- stockAgg
-  rm(stockAgg)
+  #rm(stockAgg)
   return(stockdf)
 }
 
