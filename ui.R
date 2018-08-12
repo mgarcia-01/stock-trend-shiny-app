@@ -5,7 +5,7 @@ library(plotly)
 library(ggplot2)
 
 # source files for data wrangling
-suppressWarnings(source(paste0(getwd(),"/","tickerSelect.R")))
+
 suppressWarnings(source(paste0(getwd(),"/","tickerFunction.R")))
 suppressWarnings(source(paste0(getwd(),"/","appAPI.R")))
 suppressWarnings(source(paste0(getwd(),"/","mvgavgfunc.R")))
@@ -24,8 +24,8 @@ ui <- shinyUI(fluidPage(
                     dateRangeInput('dates',
                                    label = 'Select Date Range: yyyy-mm-dd',
                                    #start = Sys.Date() - 2, end = Sys.Date()
-                                   start = as.character(startrange)
-                                   ,end = as.character(endrange)
+                                   start = as.character(Sys.Date()-1825)
+                                   ,end = as.character(Sys.Date())
                                    )
                     ,numericInput("lags", "Days lag:", 90, min = 1, max = 365)
                      #,verbatimTextOutput("value")
@@ -38,6 +38,8 @@ ui <- shinyUI(fluidPage(
           #,output$page1 <- renderUI({
           #                  inclRmd("./page1.Rmd")}
           #                  )
-                        )
+                        ),
+          hr(),
+          print("Copyright Michael Garcia 2018. All Rights Reserved.")
                           )
 )

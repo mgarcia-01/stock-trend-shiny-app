@@ -4,14 +4,19 @@
 appServer <- shinyServer(function(input, output) {
   
   dataInput3 <- reactive({
-    as.data.frame(dataframePrep(tickersym = input$ticker))
+    a <- as.data.frame(dataframePrep(tickersym = input$ticker))
+    b <- timeSer(dataframe = a)
+    c <- timeModel(dataframe = b, interval = 'confidence')
+    stockdf <- c
+    stockdf
     }
     )
-stockdf <- dataInput3()[]
+#stockdf <- dataInput3()
+
   
   dataInput <- reactive(
-    {stockdf[which(as.character(stockdf$BGN_DATEP) >= input$dates[1] &
-                     as.character(stockdf$BGN_DATEP) <= input$dates[2])
+    {dataInput3()[which(as.character(dataInput3()$BGN_DATEP) >= input$dates[1] &
+                     as.character(dataInput3()$BGN_DATEP) <= input$dates[2])
              ,]
     }
   )
@@ -32,27 +37,35 @@ stockdf <- dataInput3()[]
   #   stockdf[complete.cases(stockdf),]}
   #  )
   dataInput5 <- reactive(
-    {stockdf$mvavg <- movingAverage(stockdf$close
+    {stockdf <- dataInput()
+     stockdf$mvavg <- movingAverage(stockdf$close
                                     , n = as.numeric(dataInput2())
                                     , centered = FALSE)
      stockdf
     }
   )
   
-  
 output$plot <- renderPlot({
-    startrange <- min(dataInput()$BGN_DATEP)
-    endrange <- max(dataInput()$BGN_DATEP)
-    timeline <- c(startrange,endrange)
-    pctchglim <- c(ystart,yend)
-    closelim <- c(closestart,closeend)
+  dateRange <- dataInput5()$BGN_DATEP
+  startrange <- dateRange[1]
+  endrange <- dateRange[length(dateRange)]
+  ystart <- min(dataInput5()$pctchg)
+  yend <- max(dataInput5()$pctchg)
+  closestart <- min(dataInput5()$close)
+  closeend <- max(dataInput5()$close)
+  
+      startrange <- min(dataInput5()$BGN_DATEP)
+      endrange <- max(dataInput5()$BGN_DATEP)
+      timeline <- c(startrange,endrange)
+      pctchglim <- c(ystart,yend)
+      closelim <- c(closestart,closeend)
     
 
 ## does not need par function as the plots are not in same output.
 ## two outputs created vs 1.
     #par(mfrow=c(2,1), mai = c(0.80, 0.80, 0.1, 0.1), pty = "m")
-    plot(dataInput()$BGN_DATEP
-         ,dataInput()$pctchg
+    plot(dataInput5()$BGN_DATEP
+         ,dataInput5()$pctchg
          ,type = "l"
          ,xlab = "Date"
          ,ylab = "Price Percent Change"
@@ -62,31 +75,39 @@ output$plot <- renderPlot({
          ,lwd = 2
     )
     
-          lines(x = dataInput()$BGN_DATEP
-                ,y = dataInput()$upr
+          lines(x = dataInput5()$BGN_DATEP
+                ,y = dataInput5()$upr
                 ,type = "l"
                 ,col = "orange"
                 ,lwd = 1
                 )
-          lines(x = dataInput()$BGN_DATEP
-                ,y = dataInput()$lwr
+          lines(x = dataInput5()$BGN_DATEP
+                ,y = dataInput5()$lwr
                 ,type = "l"
                 ,col = "orange"
                 ,lwd = 1
               )
-          lines(x = dataInput()$BGN_DATEP
-                ,y = dataInput()$fit
+          lines(x = dataInput5()$BGN_DATEP
+                ,y = dataInput5()$fit
                 ,type = "l"
                 ,col = "green"
                 ,lwd = 1
           )
   })
   output$plot2 <- renderPlot({
-    startrange <- min(dataInput()$BGN_DATEP)
-    endrange <- max(dataInput()$BGN_DATEP)
-    timeline <- c(startrange,endrange)
-    pctchglim <- c(ystart,yend)
-    closelim <- c(closestart,closeend)
+    dateRange <- dataInput5()$BGN_DATEP
+    startrange <- dateRange[1]
+    endrange <- dateRange[length(dateRange)]
+    ystart <- min(dataInput5()$pctchg)
+    yend <- max(dataInput5()$pctchg)
+    closestart <- min(dataInput5()$close)
+    closeend <- max(dataInput5()$close)
+    
+      startrange <- min(dataInput5()$BGN_DATEP)
+      endrange <- max(dataInput5()$BGN_DATEP)
+      timeline <- c(startrange,endrange)
+      pctchglim <- c(ystart,yend)
+      closelim <- c(closestart,closeend)
   #  stockdf$sm <- ma(stockdf$close, order = as.numeric(dataInput2())
   #                   ,centre = FALSE)
     
