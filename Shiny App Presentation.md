@@ -1,10 +1,10 @@
 Shiny App Presentation
 ========================================================
 author: Michael Garcia
-date: August 1, 2018
+date: August 14, 2018
 autosize: true
 
-First Slide
+Introduction
 ========================================================
 
 The Stock Analysis app is used to provide a graphical representation of the
@@ -16,25 +16,23 @@ price changes and the closing price for a particular stock.
  - This plot can change the number of days lag
 - Both graphs can be adjusted for the date range
 
-Slide With Code
+Benefits:
+- Quick view in trends for price changes and simple moving average
+- Ability to adjust the lag days in simple moving average trend
+- Ability to view NYSE ticker symbol
+
+UI Code
 ========================================================
+![uiimage](ui_image.png)
 
+Server Code Part 1
+========================================================
+![server1](server_image1.png)
 
-```r
-direc <- paste0(getwd(),"/","tickerFunction.R")
-direc2 <- paste0(getwd(),"/","appAPI.R")
+Server Code Part 2
+========================================================
+![server1](server_image2.png)
 
-source(direc)
-source(direc2)
-
-head(stockdf,2)
-```
-
-```
-   BGN_DATEP close
-1 1997-05-15 23.50
-2 1997-05-16 20.75
-```
 
 Slide With Price Change Plot
 ========================================================
@@ -52,5 +50,10 @@ Slide with Closing Price Plot
 Slide with Closing Price Plot
 ========================================================
 ![reactiveoptions](reactiveoptions.png)
+
+Options Include:
+- Date range parameters
+- Ability to select 2 years days lag calculation
+- Ticker symbol input and analysis on NYSE ticker symbol
 - Closing Price plot
 - Includes simple moving average

@@ -17,7 +17,7 @@ suppressWarnings(source(paste0(getwd(),"/","intervals.R")))
 ui <- shinyUI(fluidPage(
     # Application title
           #titlePanel("Amazon Market Analysis"),
-          titlePanel("Testing Shiny App"),
+          titlePanel("Stock Trend Analysis"),
           sidebarLayout(
             sidebarPanel(
           
